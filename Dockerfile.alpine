@@ -38,7 +38,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go install . ./cmd/...
 
 # Production image
-FROM alpine:3.10.1
+FROM alpine:3.10
 
 RUN apk add --no-cache ca-certificates
 COPY --from=0 /go/bin/* /bin/
@@ -52,4 +52,5 @@ EXPOSE 19108 19109
 # simnet
 EXPOSE 18555 19556
 
-CMD [ "dcrd" ]
+# TODO: Fix this (see dcrwallet also)
+ENTRYPOINT "/bin/dcrd"
