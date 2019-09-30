@@ -10,7 +10,7 @@ fi
 if [ $(echo "$1" | cut -c1) = "-" ] || [ "$1" = "dcrd" ]; then
   mkdir -p "$DCRD_DATA"
   chmod 0755 "$DCRD_DATA"
-  chown -R decred "$DCRD_DATA"
+  chown -R decred:decred "$DCRD_DATA"
 
   echo "$0: setting appdata directory to $DCRD_DATA"
 
